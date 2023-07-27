@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+
+
+
+<body>
+ <div class="slider">
+	<h1>Predict Stress Level</h1>
+     <!-- Main Input For Receiving Query to our ML -->
+     <div class="slidecontainer">
+    <form action="{{ url_for('predict')}}"method="post">
+      <label for="range-input1"><br><br>Snoring Range(in dB)<br><br></label>
+      <input type="range" width: 100px; id="range-input1" name="sr" min="45" max="100" oninput="rangeValue1.innerText = this.value">
+      <span id="rangeValue1">50</span>
+
+      <label for="range-input2"><br><br>Respiration Rate<br><br></label>
+      <input type="range" id="range-input2" name="rr" min="16" max="30" oninput="rangeValue2.innerText = this.value">
+      <span id="rangeValue2">20</span>
+
+      <label for="range-input3"><br><br>Body Temperature(in °F)<br><br></label>
+      <input type="range" id="range-input3" name="t" min="85" max="104" oninput="rangeValue3.innerText = this.value">
+      <span id="rangeValue3">90</span>
+
+      <label for="range-input4"><br><br>Limb Movement<br><br></label>
+      <input type="range" id="range-input4" name="lm" min="4" max="20" oninput="rangeValue4.innerText = this.value">
+      <span id="rangeValue4">10</span>
+
+      <label for="range-input5"><br><br>Blood Oxygen(%)<br><br></label>
+      <input type="range" id="range-input5" name="bo" min="82" max="105" oninput="rangeValue5.innerText = this.value">
+      <span id="rangeValue5">90</span>
+
+      <label for="range-input6"><br><br>Rapid Eye Movement<br><br></label>
+      <input type="range" id="range-input6" name="rem" min="60" max="105" oninput="rangeValue6.innerText = this.value">
+      <span id="rangeValue6">65</span>
+
+      <label for="range-input7"><br><br>Sleeping Hour<br><br></label>
+      <input type="range" id="range-input7" name="sh" min="0" max="10" oninput="rangeValue7.innerText = this.value">
+      <span id="rangeValue7">6</span>
+
+      <label for="range-input8"><br><br>Heart Rate<br><br></label>
+      <input type="range" id="range-input8" name="hr" min="50" max="85" oninput="rangeValue8.innerText = this.value">
+      <span id="rangeValue8">78</span>
+    </div>
+
+      <!-- <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange" oninput="rangeValue.innerText = this.value">
+        <p id="rangeValue">100</p>
+      </div> -->
+      <!-- <label for="range-input">Select a value:</label> -->
+      
+      <!-- <label for="sr">Snoring Rate/label>
+      <input type="range" name="sr" placeholder="Snoring Rate" required="required" min="0" max="100" oninput="sR.innerText = this.value"/>
+      <p id="sR">100</p>
+      <label for="rr">Respiration Rate/label>
+      <input type="range" name="rr" placeholder="Respiration Rate" required="required" min="0" max="100" oninput="rR.innerText = this.value"/>
+      <p id="rR">100</p>
+      <input type="range" name="t" placeholder="Body Temperature(in °F)" required="required" min="0" max="100" oninput="tem.innerText = this.value"/>
+      <p id="tem">100</p>
+      <input type="range" name="lm" placeholder="Limb Movement" required="required" min="0" max="100" oninput="lM.innerText = this.value"/>
+      <p id="lM">100</p>
+    	<input type="range" name="bo" placeholder="Blood Oxygen(%)" required="required" min="0" max="100" oninput="bO.innerText = this.value"/>
+      <p id="bO">100</p>
+        <input type="range" name="rem" placeholder="Rapid Eye Movement" required="required" min="0" max="100" oninput="rem.innerText = this.value"/>
+        <p id="rem">100</p>
+		<input type="range" name="sh" placeholder="Sleeping Hour" required="required" min="0" max="100" oninput="sH.innerText = this.value"/>
+    <p id="sH">100</p>
+    <input type="range" name="hr" placeholder="Heart Rate" required="required" min="0" max="100" oninput="hR.innerText = this.value"/>
+    <p id="hR">100</p> -->
+    <br>
+    <br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+   <br>
+   <br>
+
+ </div>
+
+
+</body>
+</html>
